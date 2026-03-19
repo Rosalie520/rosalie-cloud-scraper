@@ -1,12 +1,12 @@
 services:
 - type: cron
-  name: token-fetcher
-  runtime: python
-  plan: free
-  buildCommand: pip install -r requirements.txt && python -m playwright install chromium
-  startCommand: python cloud_scraper_auto.py
-  schedule: "0 17 * * *"
-  envVars:
-  - key: TOKEN_SERVER
-    scope: build
-    value: https://www.rosalie.tw/AI%20Product%20Selector/api/token_manager.php
+  name: rosalie-token-fetcher
+    runtime: python
+      plan: free
+        buildCommand: apt-get update && apt-get install -y build-essential python3-dev && pip install --upgrade pip setuptools wheel && pip install -r requirements.txt && python -m playwright install chromium
+          startCommand: python cloud_scraper_auto.py
+            schedule: "30 9 * * *"
+              envVars:
+                - key: TOKEN_SERVER
+                    scope: build
+                        value: https://www.rosalie.tw/AI%20Product%20Selector/api/token_manager.php
