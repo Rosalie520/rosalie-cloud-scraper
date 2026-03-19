@@ -3,8 +3,7 @@ name: Daily Token Fetcher
 on:
   schedule:
           - cron: '30 9 * * *' # 每天台北時間 17:30 執行 (UTC 09:30)
-            # 允許手動觸發
-              workflow_dispatch:
+              workflow_dispatch:  # 支持手動觸發
 
               jobs:
                 fetch-tokens:
